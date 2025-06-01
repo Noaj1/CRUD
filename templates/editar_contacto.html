@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Editar Contacto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}" />
+    <!-- FontAwesome para iconos -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+</head>
+<body>
+<div id="particles-js"></div>
+    <div class="wrapper">
+        <h2>Editar Contacto</h2>
+        <form method="post">
+            <div class="input-box">
+                <i class="fa fa-user icon"></i>
+                <input type="text" name="nombre" value="{{ nombre }}" placeholder="Nombre" required />
+            </div>
+            <div class="input-box">
+                <i class="fa fa-phone icon"></i>
+                <input type="tel" name="telefono" value="{{ telefono }}" placeholder="Teléfono" required />
+            </div>
+            <div class="input-box">
+                <i class="fa fa-envelope icon"></i>
+                <input type="email" name="correo" value="{{ correo }}" required>
+            </div>
+            <input type="submit" class="btn" value="Guardar cambios" />
+        </form>
+        <a href="{{ url_for('contactos') }}" style="color: #ccc; display: block; text-align: center; margin-top: 20px; text-decoration: underline;">Cancelar</a>
+    </div>
+<!-- Motor -->
+<script src="{{ url_for('static', filename='js/particles.min.js') }}"></script>
+<!-- Configuración -->
+<script src="{{ url_for('static', filename='js/particulas.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+/* ===== RESET & FUENTES ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ===== FONDO & PARTICULAS ===== */
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: black url('/static/img/fondonew.jpg') center/cover no-repeat;
+}
+
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.wrapper {
+  position: relative;
+  z-index: 1;
+  width: auto;
+  padding: 30px 40px;
+  border-radius: 10px;
+  color: #fff;
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  overflow: visible;
+}
+
+.wrapper::before {
+  content: "";
+  position: absolute;
+  top: -5px; left: -5px; right: -5px; bottom: -5px;
+  border-radius: 15px;
+  background: linear-gradient(270deg, #00ffff, #ff00ff, #00ffff, #ff00ff);
+  background-size: 600% 600%;
+  animation: glowing 8s linear infinite;
+  opacity: 0.7;
+  z-index: -1;
+}
+
+@keyframes glowing {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.wrapper h1 {
+  font-size: 36px;
+  text-align: center;
+}
+
+/* ===== INPUTS ===== */
+.input-box,
+.password-input,
+.input-group.password-group {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin: 30px 0;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-radius: 40px;
+  background: transparent;
+  padding: 10px 15px 10px 30px;
+}
+
+.input-box input,
+.password-input input,
+.input-group.password-group input {
+  flex: 1;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 16px;
+  padding-left: 15px;
+}
+
+.input-box input::placeholder,
+.password-input input::placeholder {
+  color: #fff;
+  opacity: 1;
+}
+
+/* ===== ICONOS INPUTS ===== */
+.input-box .icon,
+.password-input i.fa-key {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ccc;
+  font-size: 18px;
+  pointer-events: none;
+}
+
+.password-input i.toggle-password,
+.input-group.password-group .icon-right {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #ccc;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.password-input i.toggle-password:hover,
+.input-group.password-group .icon-right:hover {
+  color: #fff;
+}
+
+/* ===== MENSAJES ===== */
+
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: left;         /* Centra horizontalmente */
+  justify-content: flex-start; /* Alinea hacia arriba */
+  width: 100%;
+  margin-top: -30px; /* opcional para acercar mensaje al input */
+   margin-bottom: 30px;     /* agrega esto para achicar el espacio inferior */
+}
+
+.msg {
+ max-height: 0;
+  overflow: hidden;
+  margin: 0;
+  color: transparent;
+  transition: max-height 0.3s ease, margin 0.3s ease, color 0.3s ease;
+  font-size: 14px;  /* asegúrate de que sea legible */
+}
+
+.msg.visible {
+  max-height: 100px;  /* suficientemente alto para el mensaje */
+  margin-top: 4px;
+  color: inherit;     /* para que tome el color correcto */
+}
+
+.msg.success {
+  color: #ADFF2F;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+}
+
+.msg.error {
+  color: #FFA500;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+}
+
+.icon-status-right {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  transform: translateY(-10%);
+  font-size: 16px;
+  pointer-events: none;
+}
+
+/* ===== BOTONES ===== */
+.wrapper .btn {
+  width: 100%;
+  height: 45px;
+  background: #fff;
+  border: none;
+  border-radius: 40px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.wrapper .btn:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
+}
+
+.wrapper .btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(21, 156, 228, 0.6);
+}
+
+/* ===== MEDIA QUERIES ===== */
+@media (max-width: 768px) {
+  .wrapper {
+    backdrop-filter: none;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* ===== AUTOFILL ===== */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: white !important;
+  transition: background-color 5000s ease-in-out 0s;
+}

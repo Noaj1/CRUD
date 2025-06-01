@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <!-- FontAwesome para iconos -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+</head>
+<body>
+<div id="particles-js"></div>
+
+<div class="wrapper">
+    <h1 class="bienvenido">Bienvenido de nuevo</h1>
+    <p style="text-align:center; margin-bottom: 30px; color: #ccc; font-weight: 300;">
+      Inicia sesión con tu usuario y contraseña para continuar
+    </p>
+
+    <form method="post" action="/login" id="form">
+        <!-- Usuario -->
+        <div class="input-box">
+            <i class="fas fa-user icon-left"></i>
+            <input type="text" id="usuario" name="usuario" placeholder="Usuario" required />
+            <i class="icon-right" id="icon-usuario"></i>
+        </div>
+        
+        <div class="contenedor">
+            <div class="msg" id="msg-usuario"></div>
+        </div>
+
+        <div class="input-group password-group">
+            <i class="fa-solid fa-key icon-left"></i>
+            <input type="password" id="password" name="password" placeholder="Contraseña" required />
+            <i class="toggle-password fa-solid fa-eye icon-right" id="icon-password"></i>
+        </div>
+        <div class="contenedor">
+            <div class="msg" id="msg-password">Debe tener al menos 5 caracteres.</div>
+        </div>
+        <button type="submit" class="btn">Iniciar sesión</button>
+    </form>
+
+    <br>
+
+    <a href="/registro" style="color: #ccc; display: block; text-align: center;">
+        ¿No tienes cuenta? Regístrate aquí
+    </a>
+
+    {% if error %}
+            <p style="color: #FFA500; margin-top: 10px; text-align: center;">{{ error }}</p>
+    {% endif %}
+</div>
+
+<script src="{{ url_for('static', filename='js/particles.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/particulas.js') }}"></script>
+<script src="{{ url_for('static', filename='js/togglePassword.js') }}"></script>
+<script src="{{ url_for('static', filename='js/validaciones.js') }}"></script>
+
+</body>
+</html>
+
+

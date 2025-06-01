@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Contactos de {{ usuario }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contactos.css') }}" />
+</head>
+<body>
+<div id="particles-js"></div>
+    <div class="wrapper">
+        <h2>Contactos de {{ usuario }}</h2>
+    <input type="text" id="searchInput" placeholder="Buscar contacto por nombre..." onkeyup="filtrarContactos()">
+ <table class="tabla-contactos">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Teléfono</th>
+            <th>Correo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if contactos|length == 0 %}
+            <tr>
+                <td colspan="4" class="empty-message">¡Agrega tus contactos! 🚀</td>
+            </tr>
+        {% else %}
+            {% for c in contactos %}
+                <tr>
+                    <td>{{ c.nombre }}</td>
+                    <td>{{ c.telefono }}</td>
+                    <td><a href="mailto:{{ c.correo }}">{{ c.correo }}</a></td>
+                    <td class="acciones">
+                        <a href="{{ url_for('editar_contacto', id=c.id) }}">Editar</a>
+                        <form action="{{ url_for('eliminar_contacto', id=c.id) }}" method="post" style="display:inline;">
+                            <button type="submit" onclick="return confirm('¿Seguro quieres eliminar?')">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+    </tbody>
+</table>
+
+
+
+        <a href="{{ url_for('agregar_contacto') }}" class="back-link">Agregar Contacto</a>
+        <a href="{{ url_for('exportar_contactos') }}" class="back-link">📥 Exportar CSV</a>
+        <a href="{{ url_for('logout') }}" class="back-link">Cerrar sesión</a>
+    </div>
+<!-- Motor -->
+<script src="{{ url_for('static', filename='js/particles.min.js') }}"></script>
+<!-- Configuración -->
+<script src="{{ url_for('static', filename='js/particulas.js') }}"></script>
+<script src="{{ url_for('static', filename='js/search.js') }}"></script>
+</body>
+</html>
+
